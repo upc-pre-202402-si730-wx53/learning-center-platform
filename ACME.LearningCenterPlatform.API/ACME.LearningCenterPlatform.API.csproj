@@ -7,7 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="EntityFrameworkCore.CreatedUpdatedDate" Version="8.0.0" />
+    <PackageReference Include="Humanizer" Version="2.14.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Publishing\Domain\Model\Aggregates\" />
+    <Folder Include="Publishing\Domain\Model\Commands\" />
+    <Folder Include="Publishing\Domain\Model\Queries\" />
+    <Folder Include="Publishing\Application\" />
+    <Folder Include="Publishing\Domain\Services\" />
+    <Folder Include="Publishing\Domain\Repositories\" />
+    <Folder Include="Publishing\Infrastructure\Persistence\EFC\Repositories\" />
+    <Folder Include="Publishing\Interfaces\" />
+  </ItemGroup>
+	
+	
 
 </Project>
