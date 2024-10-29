@@ -17,8 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Publishing\Domain\Model\Commands\" />
-    <Folder Include="Publishing\Domain\Model\Queries\" />
     <Folder Include="Publishing\Application\" />
     <Folder Include="Publishing\Domain\Services\" />
     <Folder Include="Publishing\Infrastructure\Persistence\EFC\Repositories\" />
