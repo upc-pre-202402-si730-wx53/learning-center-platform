@@ -1,3 +1,5 @@
+using ACME.LearningCenterPlatform.API.Publishing.Domain.Repositories;
+using ACME.LearningCenterPlatform.API.Publishing.Infrastructure.Persistence.EFC.Repositories;
 using ACME.LearningCenterPlatform.API.Shared.Domain.Repositories;
 using ACME.LearningCenterPlatform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 using ACME.LearningCenterPlatform.API.Shared.Infrastructure.Persistence.EFC.Repositories;
@@ -39,7 +41,7 @@ else if (builder.Environment.IsProduction())
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options => options.EnableAnnotations());
 
 // Configure Lower Case URLs
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
@@ -49,11 +51,20 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 // Shared Bounded Context Injection Configuration
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// OTHERS CONTEXT INJECTION CONFIGURATION
-// OTHERS CONTEXT INJECTION CONFIGURATION
-// OTHERS CONTEXT INJECTION CONFIGURATION
+// Publishing Bounded Context
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ITutorialRepository, TutorialRepository>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+
+    context.Database.EnsureCreated();
+}
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
