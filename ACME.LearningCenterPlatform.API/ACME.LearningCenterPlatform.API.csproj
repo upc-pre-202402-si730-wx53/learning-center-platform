@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Publishing\Application\" />
-    <Folder Include="Publishing\Domain\Services\" />
     <Folder Include="Publishing\Infrastructure\Persistence\EFC\Repositories\" />
     <Folder Include="Publishing\Interfaces\" />
   </ItemGroup>
