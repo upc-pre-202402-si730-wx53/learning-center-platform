@@ -1,6 +1,6 @@
 ﻿namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Queries
 {
-    public class GetAllTutoriasQuery
+    public class GetAllTutorialsQuery
     {
     }
 }
