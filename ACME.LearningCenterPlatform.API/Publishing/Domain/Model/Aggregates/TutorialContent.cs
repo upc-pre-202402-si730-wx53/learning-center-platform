@@ -14,6 +14,10 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates
         public bool HasReadableAssets => Assets.Any(asset => asset.Readable);
         public bool HasViewableAssets => Assets.Any(asset => asset.Viewable);
 
+
+        /// <summary>
+        ///  Defaul constructor for the tutorial entity
+        /// </summary>
         public Tutorial()
         {
             Title = string.Empty;
@@ -22,11 +26,34 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates
             Status = EPublishingStatus.Draft;
         }
 
+        /// <summary>
+        /// Verify if an image already exists in the tutorial
+        /// </summary>
+        /// <param name="imageUrl"></param>
+        /// <returns>
+        /// True if the image asset exists, false otherwise
+        /// </returns>
         private bool ExistsImageByUrl(string imageUrl) =>
             Assets.Any(asset => asset.AssetType == EAssetType.Image && (string)asset.GetContent() == imageUrl);
+
+
+        /// <summary>
+        /// Verify if a video already exists in the tutorial
+        /// </summary>
+        /// <param name="videoUrl"></param>
+        /// <returns>
+        /// True if the video asset exists, false otherwise
+        /// </returns>
         private bool ExistsVideoByUrl(string videoUrl) =>
             Assets.Any(asset => asset.AssetType == EAssetType.Video && (string)asset.GetContent() == videoUrl);
 
+        /// <summary>
+        /// Verify if a readable content asset already exists in the tutorial
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns>
+        /// True if the readable content asset exists, false otherwise
+        /// </returns>
         private bool ExistsReadableContent(string content) => 
             Assets.Any(asset => asset.AssetType == EAssetType.ReadableContentItem && (string)asset.GetContent() == content);
 
