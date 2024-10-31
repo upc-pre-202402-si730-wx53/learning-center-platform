@@ -6,6 +6,6 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Services
     public interface ICategoryQueryService
     {
         public Task<Category?> Handle(GetCategoryByIdQuery query);
-        public IEnumerable<Category> Handle(GetAllCategoriesQuery query);
+        public Task<IEnumerable<Category>> Handle(GetAllCategoriesQuery query);
     }
 }

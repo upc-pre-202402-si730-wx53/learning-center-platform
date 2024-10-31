@@ -1,6 +1,4 @@
 ﻿namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Queries
 {
-    public class GetAllTutorialsByCategoryIdQuery
-    {
-    }
+    public record GetAllTutorialsByCategoryIdQuery(int CategoryId);
 }

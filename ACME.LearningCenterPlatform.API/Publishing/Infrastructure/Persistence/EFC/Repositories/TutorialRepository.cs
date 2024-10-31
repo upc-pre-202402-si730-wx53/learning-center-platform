@@ -15,5 +15,10 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Infrastructure.Persistence.
                 .Where(tutorial => tutorial.CategoryId == cateogoryId)
                 .ToListAsync();
         }
+
+        public async Task<bool> ExistByTitleAsync(string title)
+        {
+            return await context.Set<Tutorial>().AnyAsync(tutorial => tutorial.Title == title); 
+        }
     }
 }

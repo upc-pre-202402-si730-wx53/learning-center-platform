@@ -8,5 +8,7 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Repositories
 
         Task<IEnumerable<Tutorial>> FindByCategoryIdAsync(int cateogoryId);
 
+        Task<bool> ExistByTitleAsync(string title);
+
     }
 }

@@ -13,7 +13,7 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates
         public int Id { get; }
         public string Title { get; private set; }
         public string Summary { get; private set; }
-        public Category Category { get; private set; }
+        public Category Category { get; internal set; }
         public int CategoryId { get; private set; }
 
 

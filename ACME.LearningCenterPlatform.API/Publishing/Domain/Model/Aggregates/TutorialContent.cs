@@ -1,4 +1,5 @@
-﻿using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Entities;
+﻿using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Commands;
+using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Entities;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.ValueObjects;
 
 namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates
@@ -24,6 +25,11 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates
             Summary = string.Empty;
             Assets = new List<Asset>();
             Status = EPublishingStatus.Draft;
+        }
+
+        public Tutorial(CreateTutorialCommand command) : this(command.Title, command.Summary, command.CategoryId)
+        {
+
         }
 
         /// <summary>
