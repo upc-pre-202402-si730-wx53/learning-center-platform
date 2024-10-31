@@ -17,7 +17,7 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Entities
             Name = name;
         }
 
-        public Category(CreateCaegoryCommand command)
+        public Category(CreateCategoryCommand command)
         {
             Name = command.Name;
         }

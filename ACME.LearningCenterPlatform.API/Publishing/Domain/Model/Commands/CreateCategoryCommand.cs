@@ -1,5 +1,5 @@
 ﻿namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Commands
 {
-    public record CreateCaegoryCommand(string Name);
+    public record CreateCategoryCommand(string Name);
 
 }

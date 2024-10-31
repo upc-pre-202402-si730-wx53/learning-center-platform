@@ -5,6 +5,6 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Services
 {
     public interface ICategoryCommandService
     {
-        public Task<Category> Handle(CreateCaegoryCommand command);
+        public Task<Category> Handle(CreateCategoryCommand command);
     }
 }

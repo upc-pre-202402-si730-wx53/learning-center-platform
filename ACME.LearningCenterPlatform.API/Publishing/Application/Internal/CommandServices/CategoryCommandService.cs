@@ -8,7 +8,7 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Application.Internal.Comman
 {
     public class CategoryCommandService(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork) : ICategoryCommandService
     {
-        async Task<Category> ICategoryCommandService.Handle(CreateCaegoryCommand command)
+        async Task<Category> ICategoryCommandService.Handle(CreateCategoryCommand command)
         {
             var category = new Category(command);
 
