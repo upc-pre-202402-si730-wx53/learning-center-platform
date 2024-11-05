@@ -1,4 +1,5 @@
-﻿using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Commands;
+﻿using ACME.LearningCenterPlatform.API.Publishing.Application.Internal.OutboundServices.ACL;
+using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Commands;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Queries;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Services;
 using ACME.LearningCenterPlatform.API.Publishing.Interfaces.REST.Resources;
@@ -66,5 +67,15 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Interfaces.REST
 
             return CreatedAtAction(nameof(GetTutorialById), new { tutorialIdentifier = resource.Id }, resource);
         }
+
+        [HttpGet("profiles")]
+        public async Task<IActionResult> GetProfileByEmail([FromQuery(Name = "email")] string email)
+        { 
+            Console.WriteLine($"Email: {email}");
+            var profileId = await _tutorialCommandService.GetProfileId(email);
+            if (profileId == null) return NotFound();
+            return Ok(profileId?.Id);
+        }
+
     }
 }

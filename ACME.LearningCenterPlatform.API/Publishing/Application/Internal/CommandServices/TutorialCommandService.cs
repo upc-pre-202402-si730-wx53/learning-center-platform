@@ -1,13 +1,16 @@
-﻿using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates;
+﻿using ACME.LearningCenterPlatform.API.Publishing.Application.Internal.OutboundServices.ACL;
+using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Commands;
+using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.ValueObjects;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Repositories;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Services;
 using ACME.LearningCenterPlatform.API.Shared.Domain.Repositories;
 
 namespace ACME.LearningCenterPlatform.API.Publishing.Application.Internal.CommandServices
 {
-    public class TutorialCommandService(ITutorialRepository tutorialRepository, ICategoryRepository categoryRepository, IUnitOfWork unitOfWork) : ITutorialCommandService
+    public class TutorialCommandService(ITutorialRepository tutorialRepository, ICategoryRepository categoryRepository, IUnitOfWork unitOfWork, IExternalProfileService externalProfileService) : ITutorialCommandService
     {
+
         async Task<Tutorial?> ITutorialCommandService.Handle(CreateTutorialCommand command)
         {
             var category = await categoryRepository.FindByIdAsync(command.CategoryId);
@@ -29,5 +32,13 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Application.Internal.Comman
             await unitOfWork.CompleteAsync();
             return tutorial;
         }
+
+        async Task<ProfileId?> ITutorialCommandService.GetProfileId(string email)
+        {
+            var profileId = await externalProfileService.FetchProfileIdByEmail(email);
+            Console.WriteLine($"Profile ID 2: {profileId}");
+            return profileId;
+        }
+
     }
 }

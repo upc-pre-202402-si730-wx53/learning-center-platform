@@ -3,7 +3,9 @@ using ACME.LearningCenterPlatform.API.Profiles.Application.Internal.QueryService
 using ACME.LearningCenterPlatform.API.Profiles.Domain.Repositories;
 using ACME.LearningCenterPlatform.API.Profiles.Domain.Services;
 using ACME.LearningCenterPlatform.API.Profiles.Infrastructure.Persistence.EFC.Repositories;
+using ACME.LearningCenterPlatform.API.Profiles.Interfaces.ACL;
 using ACME.LearningCenterPlatform.API.Publishing.Application.Internal.CommandServices;
+using ACME.LearningCenterPlatform.API.Publishing.Application.Internal.OutboundServices.ACL;
 using ACME.LearningCenterPlatform.API.Publishing.Application.Internal.QueryServices;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Repositories;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Services;
@@ -69,10 +71,16 @@ builder.Services.AddScoped<ITutorialCommandService, TutorialCommandService>();
 builder.Services.AddScoped<ITutorialQueryService, TutorialQueryService>();
 
 
+builder.Services.AddScoped<IExternalProfileService, ExternalProfileService>();
+
+
+
+
 // Profile Bounded Context
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IProfileCommandService, ProfileCommandService>();
 builder.Services.AddScoped<IProfileQueryService, ProfileQueryService>();
+builder.Services.AddScoped<IProfilesContextFacade, ProfilesContextFacade>();
 
 var app = builder.Build();
 
