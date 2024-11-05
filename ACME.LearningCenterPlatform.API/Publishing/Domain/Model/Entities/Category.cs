@@ -1,4 +1,5 @@
-﻿using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Commands;
+﻿using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates;
+using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Commands;
 
 namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Entities
 {
@@ -6,6 +7,7 @@ namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public ICollection<Tutorial> Tutorials{ get; }
 
         public Category()
         {
